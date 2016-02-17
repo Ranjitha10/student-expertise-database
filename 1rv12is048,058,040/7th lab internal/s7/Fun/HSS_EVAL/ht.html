@@ -1,0 +1,48 @@
+<html>
+<head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>HSS Evaluation</title>
+<meta name="title" content="HSS Evaluation"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+
+<link href="css/style_demo.css" rel="stylesheet" type="text/css" />
+
+<script>
+function showHint(str) {
+    if (str.length == 0) { 
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+            }
+        };
+        xmlhttp.open("GET", "gethint.php?q=" + str, true);
+        xmlhttp.send();
+    }
+}
+</script>
+</head>
+<body use oncontextmenu="return false;">
+<form method="post" action="HSSE2.php">
+<div id="bodyfull">
+<br><br><br><br><br><br><br><br><br><br>
+<div id="bodyfull2">
+<h1 align="center" color="FF0000"><p><b>Start typing a name in the input field below:</b></p></h1>
+<br><br><br><br><br><br><br><br>
+<h3 align="center" color="FF0000">First name: <input type="text" onkeyup="showHint(this.value)"></h3><br><br><br><br>
+<p align="center" color="FF0000">Suggestions: <span id="txtHint"></span></p>
+
+ 
+</div></div>
+
+
+</form>
+</body>
+</html>

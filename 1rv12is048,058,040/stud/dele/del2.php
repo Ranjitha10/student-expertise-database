@@ -1,0 +1,26 @@
+
+
+
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "student_expertize";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+$USN= $_POST ['USN'];
+$sql = "DELETE FROM student WHERE USN=$USN";
+if ($conn->query($sql) === TRUE) {
+					header('location: sub.php');
+} else {
+				header('Location:err.php');
+}
+
+$conn->close();
+?>
